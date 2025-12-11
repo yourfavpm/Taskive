@@ -160,6 +160,75 @@ export default function TalentProfilePage({
             </CardContent>
           </Card>
 
+          {/* Vetting Levels */}
+<Card>
+  <CardHeader>
+    <CardTitle>Taskive Vetting Status</CardTitle>
+    <CardDescription>Progress across the 5-step vetting pipeline</CardDescription>
+  </CardHeader>
+
+  <CardContent className="space-y-4">
+    {[
+      { level: 1, title: "Identity Verification", status: "Completed" },
+      { level: 2, title: "Experience & CV Screening", status: "Completed" },
+      { level: 3, title: "Skills Assessment", status: "Completed" },
+      { level: 4, title: "Interview Vetting", status: "In Progress" },
+      { level: 5, title: "Final Approval", status: "Pending" },
+    ].map((step) => (
+      <div key={step.level} className="flex items-center justify-between">
+        <div>
+          <p className="font-medium">{step.title}</p>
+        </div>
+
+        <Badge
+          variant={
+            step.status === "Completed"
+              ? "default"
+              : step.status === "In Progress"
+              ? "secondary"
+              : "outline"
+          }
+        >
+          {step.status}
+        </Badge>
+      </div>
+    ))}
+  </CardContent>
+</Card>
+
+{/* Talent Manager Internal Feedback */}
+<Card>
+  <CardHeader>
+    <CardTitle>Talent Manager Feedback</CardTitle>
+    <CardDescription>Internal notes from Taskive’s review team</CardDescription>
+  </CardHeader>
+
+  <CardContent className="space-y-3">
+    <p className="text-sm text-muted-foreground">
+      These notes are only visible to the Taskive internal team.
+    </p>
+
+    {/* Example note */}
+    <div className="p-3 rounded-md bg-muted">
+      <p className="text-sm">
+        <span className="font-semibold">TM John:</span> Candidate performed
+        strongly during the skills assessment. Recommend prioritizing them for
+        operations-focused clients.
+      </p>
+    </div>
+
+    <textarea
+      placeholder="Add internal feedback…"
+      className="w-full p-3 border rounded-md bg-transparent"
+      rows={4}
+    />
+
+    <Button className="w-full">Save Feedback</Button>
+  </CardContent>
+</Card>
+
+
+
           {/* Reviews */}
           <Card>
             <CardHeader>

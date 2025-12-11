@@ -24,6 +24,7 @@ interface TeamMember {
   endDate: string
   avatar: string
   timesheetType: string
+  timesheets?: any[]
 }
 
 interface TeamMemberCardProps {
